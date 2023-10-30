@@ -1,0 +1,35 @@
+#Définition des méthodes de récupération de données
+type Query {
+    #Une Liste de BankAccount
+    accountsList : [BankAccount]
+    #Récupérer un BankAcoount par son ID
+    bankAccountById (id : String) : BankAccount
+}
+
+#Définition des méthodes de modification de données
+type Mutation {
+    addAccount(request : BankAccountRequestDTO) : BankAccountResponseDTO
+}
+#Définition de BankAccount
+type BankAccount {
+    id : String,
+    createdAt : Float,
+    balance : Float,
+    currency : String,
+    type : String
+}
+
+
+#Définition de BankAccount
+type BankAccountResponseDTO {
+    id : String,
+    createdAt : Float,
+    balance : Float,
+    currency : String,
+    type : String
+}
+input BankAccountRequestDTO{
+    balance : Float,
+    currency : String,
+    type : String
+}
