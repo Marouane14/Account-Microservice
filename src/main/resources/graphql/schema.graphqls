@@ -4,11 +4,15 @@ type Query {
     accountsList : [BankAccount]
     #Récupérer un BankAcoount par son ID
     bankAccountById (id : String) : BankAccount
+    #Récupérer la liste des Customers
+    customers : [Customer]
 }
 
 #Définition des méthodes de modification de données
 type Mutation {
     addAccount(request : BankAccountRequestDTO) : BankAccountResponseDTO
+    updateAccount(request : BankAccountRequestDTO) : BankAccountResponseDTO
+    deleteAccount(id : String) : Boolean
 }
 #Définition de BankAccount
 type BankAccount {
@@ -16,11 +20,17 @@ type BankAccount {
     createdAt : Float,
     balance : Float,
     currency : String,
-    type : String
+    type : String,
+    customer : Customer
+}
+#Définition de Customer
+type Customer{
+    id : ID,
+    name : String
+    bankAccounts : [BankAccount]
 }
 
-
-#Définition de BankAccount
+#Définition de BankAccountResponse
 type BankAccountResponseDTO {
     id : String,
     createdAt : Float,
